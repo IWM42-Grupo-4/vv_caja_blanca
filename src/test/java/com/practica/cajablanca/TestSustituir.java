@@ -29,14 +29,46 @@ public class TestSustituir {
     @Test
     @DisplayName("TestExistePalabra")
     public void testExistePalabra(){
+        String palabraABuscar = "hola";
+        String palabraSustituida = "adios";
+
         Editor editor = new Editor();
+        Editor editor_referencia = new Editor();
 
         editor.leerFichero("src/test/java/com/practica/cajablanca/TestSustituir/testExistePalabra.txt");
+        editor_referencia.leerFichero("src/test/java/com/practica/cajablanca/TestSustituir/testExistePalabra.txt");
 
-        editor.sustituirPalabra("hola", "adios");
+        editor.sustituirPalabra(palabraABuscar, palabraSustituida);
 
         try{
-            assertEquals("[Aquí, se, encuentra, la, palabra, adios]", editor.getLinea(3).toString());
+            for (int i = 1; i < editor.size(); i++) {
+                assertEquals(editor_referencia.getLinea(i).toString().replaceAll(palabraABuscar, palabraSustituida),
+                        editor.getLinea(i).toString());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    @DisplayName("TestNoExistePalabra")
+    public void testNoExistePalabra(){
+        String palabraABuscar = "hola";
+        String palabraSustituida = "adios";
+
+        Editor editor = new Editor();
+        Editor editor_referencia = new Editor();
+
+        editor.leerFichero("src/test/java/com/practica/cajablanca/TestSustituir/testNoExistePalabra.txt");
+        editor_referencia.leerFichero("src/test/java/com/practica/cajablanca/TestSustituir/testNoExistePalabra.txt");
+
+        editor.sustituirPalabra(palabraABuscar, palabraSustituida);
+
+        try{
+            for (int i = 1; i < editor.size(); i++) {
+                assertEquals(editor_referencia.getLinea(i).toString(), editor.getLinea(i).toString());
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
