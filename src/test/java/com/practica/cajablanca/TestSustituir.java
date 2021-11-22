@@ -20,9 +20,25 @@ public class TestSustituir {
     public void testArchivoVacio(){
         Editor editor = new Editor();
 
-        editor.leerFichero("src/test/java/com/practica/cajablanca/testArchivoVacio.txt");
+        editor.leerFichero("src/test/java/com/practica/cajablanca/TestSustituir/testArchivoVacio.txt");
 
         editor.sustituirPalabra("Hola", "adios");
         assertEquals(0, editor.size());
+    }
+
+    @Test
+    @DisplayName("TestExistePalabra")
+    public void testExistePalabra(){
+        Editor editor = new Editor();
+
+        editor.leerFichero("src/test/java/com/practica/cajablanca/TestSustituir/testExistePalabra.txt");
+
+        editor.sustituirPalabra("hola", "adios");
+
+        try{
+            assertEquals("[Aquí, se, encuentra, la, palabra, adios]", editor.getLinea(3).toString());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
