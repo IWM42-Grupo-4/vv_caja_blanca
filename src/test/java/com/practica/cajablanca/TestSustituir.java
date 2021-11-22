@@ -14,4 +14,15 @@ public class TestSustituir {
         editor.sustituirPalabra("hola", "adios");
         assertTrue(editor.editIsEmpty());
     }
+
+    @Test
+    @DisplayName("TestArchivoVacio")
+    public void testArchivoVacio(){
+        Editor editor = new Editor();
+
+        editor.leerFichero("testArchivoVacio");
+
+        editor.sustituirPalabra("Hola", "adios");
+        assertEquals(0, editor.size());
+    }
 }
