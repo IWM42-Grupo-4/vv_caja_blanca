@@ -20,7 +20,7 @@ public class TestSustituir {
     public void testArchivoVacio(){
         Editor editor = new Editor();
 
-        editor.leerFichero("testArchivoVacio");
+        editor.leerFichero("src/test/java/com/practica/cajablanca/testArchivoVacio.txt");
 
         editor.sustituirPalabra("Hola", "adios");
         assertEquals(0, editor.size());
