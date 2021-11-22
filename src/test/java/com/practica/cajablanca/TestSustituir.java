@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestSustituir {
     @Test
-    @DisplayName("TestVacio")
-    public void testVacio(){
+    @DisplayName("TestEditorNull")
+    public void testEditorNull(){
         Editor editor = new Editor();
 
         editor.sustituirPalabra("hola", "adios");
