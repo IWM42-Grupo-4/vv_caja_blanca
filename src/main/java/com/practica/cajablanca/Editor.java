@@ -10,20 +10,16 @@ import com.cajanegra.SingleLinkedListImpl;
 
 public class Editor {
 
-	//private AbstractSingleLinkedListImpl<AbstractSingleLinkedListImpl<String>> editor;
-	//private AbstractSingleLinkedListImpl<String> lista;
-	private SingleLinkedListImpl<SingleLinkedListImpl<String>> editor;
-	private SingleLinkedListImpl<String> lista;
+	private AbstractSingleLinkedListImpl<AbstractSingleLinkedListImpl<String>> editor;
+	private AbstractSingleLinkedListImpl<String> lista;
 
 	@SuppressWarnings("unchecked")
-	public Editor(SingleLinkedListImpl<SingleLinkedListImpl<String>> editor	) {
-		//editor = new SingleLinkedListImpl<AbstractSingleLinkedListImpl<String>>();
-		//this.lista = lista;
-		this.editor = editor;
+	public Editor() {
+		editor = new SingleLinkedListImpl<AbstractSingleLinkedListImpl<String>>();
 	}
 
 	/**
-	 *
+	 * 
 	 * @return el tamaño de la lista
 	 */
 	public int size() {
@@ -35,14 +31,14 @@ public class Editor {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param linea
 	 * @return la lista correspondiente a la línea pasada como parámetro
 	 * @throws EmptyCollectionException si el editor está vacío
 	 * @throws Si                       el número de línea es incorrecta lanza
 	 *                                  IllegalArgumentException
 	 */
-	public SingleLinkedListImpl<String> getLinea(int linea) throws EmptyCollectionException {
+	public AbstractSingleLinkedListImpl<String> getLinea(int linea) throws EmptyCollectionException {
 		if (editor.isEmpty()) {
 			throw new EmptyCollectionException(" editor ");
 		}
@@ -55,7 +51,7 @@ public class Editor {
 	/**
 	 * Leemos un fichero de entrada con líneas de texto que cargaremos en nuestra
 	 * lista de listas "lineas".
-	 *
+	 * 
 	 * @param nombre del fichero del que leemos
 	 */
 	public void leerFichero(String nombreFichero) {
@@ -98,7 +94,7 @@ public class Editor {
 
 	// public int numPalabras(int inicio, int fin, String palabra) {
 	/**
-	 *
+	 * 
 	 * @param inicio
 	 * @param fin
 	 * @param palabra a buscar en el texto
@@ -149,7 +145,7 @@ public class Editor {
 	}
 
 	/**
-	 *
+	 * 
 	 * @return la palabra de mayor longitud
 	 * @throws EmptyCollectionException
 	 */
@@ -178,12 +174,11 @@ public class Editor {
 	 */
 	public void sustituirPalabra(String palabra, String nuevaPalabra) {
 		if (this.editor.size() > 0) {
-			//AbstractSingleLinkedListImpl<AbstractSingleLinkedListImpl<String>> nuevoEditor = new SingleLinkedListImpl<AbstractSingleLinkedListImpl<String>>();
-			SingleLinkedListImpl<SingleLinkedListImpl<String>> nuevoEditor = new SingleLinkedListImpl<SingleLinkedListImpl<String>>();
+			AbstractSingleLinkedListImpl<AbstractSingleLinkedListImpl<String>> nuevoEditor = 
+					new SingleLinkedListImpl<AbstractSingleLinkedListImpl<String>>();
 			int i=1;
 			do {
-				//AbstractSingleLinkedListImpl<String> aux = new SingleLinkedListImpl<String>();
-				SingleLinkedListImpl<String> aux = new SingleLinkedListImpl<String>();
+				AbstractSingleLinkedListImpl<String> aux = new SingleLinkedListImpl<String>();
 				this.lista = this.editor.getAtPos(i);
 				int j=1;
 				while (j<=this.lista.size()) {
@@ -202,6 +197,6 @@ public class Editor {
 	}
 
 	public static void main(String[] args) throws EmptyCollectionException {
-
+	
 	}
 }
